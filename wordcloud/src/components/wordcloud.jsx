@@ -5,7 +5,7 @@ import io from "socket.io-client";
 import WordCloud from "./Cloud";
 
 
-const socket = io("http://localhost:3000");
+const socket = io("https://wordcloud-twql.onrender.com");
 
 // WordCloud Component
 const WordCloudComp = () => {

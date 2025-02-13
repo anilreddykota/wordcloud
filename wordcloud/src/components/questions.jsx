@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Send, Shield, Clock, Trash2, MessageCircle, Copy, Save } from "lucide-react";
 import io from "socket.io-client";
 
-const socket = io("http://localhost:3000");
+const socket = io("https://wordcloud-twql.onrender.com");
 
 const STORAGE_KEY = 'wordcloud_questions';
 

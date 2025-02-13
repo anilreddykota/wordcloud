@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Cloud, Send, RefreshCw, Crown } from "lucide-react";
 import io from "socket.io-client";
 
-const socket = io("http://localhost:3000");
+const socket = io("https://wordcloud-twql.onrender.com");
 
 const SendResponses = () => {
   const [questions, setQuestions] = useState([]);
