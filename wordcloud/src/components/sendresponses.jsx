@@ -9,11 +9,13 @@ const SendResponses = () => {
   const [questions, setQuestions] = useState([]);
   const [responses, setResponses] = useState([]);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
 
   useEffect(() => {
     socket.on("question", (newQuestion) => {
       setQuestions([newQuestion]);
       setResponses([[""]]);
+      setSubmitted(false);
     });
 
     return () => {
@@ -34,6 +36,7 @@ const SendResponses = () => {
     if (firstResponse) {
       setIsSubmitting(true);
       socket.emit("word", firstResponse);
+      setSubmitted(true);
       
       // Simulate network delay for animation
       await new Promise(resolve => setTimeout(resolve, 500));
@@ -69,6 +72,13 @@ const SendResponses = () => {
                   {question}
                 </h3>
                 <div className="relative">
+                {
+                  submitted ? (
+                    <div className="absolute top-0 right-0 -mt-2 -mr-2 bg-blue-500 text-white text-xs font-semibold px-2 py-1 rounded-full flex items-center space-x-1">
+                      <span>Response submitted!</span>
+                    </div>
+                  ):
+              
                   <input
                     type="text"
                     value={responses[questionIndex]?.[0] || ""}
@@ -77,6 +87,7 @@ const SendResponses = () => {
                     className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all duration-200"
                     placeholder="Type your response..."
                   />
+                }
                 </div>
               </motion.div>
             ))}
