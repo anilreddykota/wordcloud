@@ -1,0 +1,72 @@
+/* Professional WordCloud Styles for Projector Display */
+
+.word-cloud-light,
+.word-cloud-dark {
+  filter: contrast(1.1) brightness(1.05);
+}
+
+.word-cloud-dark {
+  filter: contrast(1.2) brightness(1.1);
+}
+
+/* High contrast mode for better projector visibility */
+@media (prefers-contrast: high) {
+  .word-cloud-light text {
+    stroke: rgba(255, 255, 255, 0.3);
+    stroke-width: 0.5px;
+  }
+  
+  .word-cloud-dark text {
+    stroke: rgba(0, 0, 0, 0.3);
+    stroke-width: 0.5px;
+  }
+}
+
+/* Ensure text is crisp and readable */
+.word-cloud-light text,
+.word-cloud-dark text {
+  shape-rendering: geometricPrecision;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Animation keyframes for smooth transitions */
+@keyframes wordFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 0.9;
+    transform: scale(1);
+  }
+}
+
+/* Responsive adjustments for different screen sizes */
+@media (max-width: 768px) {
+  .word-cloud-container {
+    padding: 1rem;
+  }
+}
+
+@media (min-width: 1920px) {
+  /* 4K and ultra-wide display optimizations */
+  .word-cloud-light,
+  .word-cloud-dark {
+    filter: contrast(1.15) brightness(1.1) saturate(1.1);
+  }
+}
+
+/* Print styles for presentation handouts */
+@media print {
+  .word-cloud-dark {
+    filter: invert(1) contrast(1.2);
+  }
+  
+  .word-cloud-light,
+  .word-cloud-dark {
+    -webkit-print-color-adjust: exact;
+    color-adjust: exact;
+  }
+}

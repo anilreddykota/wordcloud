@@ -1,0 +1,15 @@
+User-agent: *
+Allow: /
+Allow: /display
+Allow: /admin
+
+# Sitemap location
+Sitemap: https://wc.anilreddykota.me/sitemap.xml
+
+# Crawl-delay for respectful crawling
+Crawl-delay: 1
+
+# Block access to source maps and config files
+Disallow: /*.map$
+Disallow: /config/
+Disallow: /*.json$
